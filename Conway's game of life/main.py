@@ -23,16 +23,16 @@ def checkingSpecificElementConditions(frame, col, row, newFrame):
     count = howManyAliveAroundCurrent(frame, col, row)
     value = frame[col][row]
     if (isAlive(value)) and ((count == 2) or (count == 3)) :
-        print("frame with col:", col, " and row:", row, " with value", value, " will remain alive")
+        # print("frame with col:", col, " and row:", row, " with value", value, " will remain alive")
         makeAlive(newFrame, col, row)
     elif isAlive(value) and (count < 2 or count > 3 ):
-        print("frame with col:", col, " and row:", row, " with value", value, " will change to dead")
+        # print("frame with col:", col, " and row:", row, " with value", value, " will change to dead")
         makeDead(newFrame, col, row)
     elif (not isAlive(value)) and (count == 3):
-        print("frame with col:", col, " and row:", row, " with value", value, " will become alive")
+        # print("frame with col:", col, " and row:", row, " with value", value, " will become alive")
         makeAlive(newFrame, col, row)
     else:
-        print("frame with col:", col, " and row:", row, " with value", value, " will remain dead")
+        # print("frame with col:", col, " and row:", row, " with value", value, " will remain dead")
         makeDead(newFrame, col, row)
 
 # Alive is '*', Dead is ' ' 
@@ -54,28 +54,28 @@ def makeAlive(frame, col, row):
 
 def howManyAliveAroundCurrent(frame, col, row):
     count = 0
-    print("Testing element in location col: ", col, " row: ", row, " which is ", isAliveStr(frame[col][row]))
+    # print("Testing element in location col: ", col, " row: ", row, " which is ", isAliveStr(frame[col][row]))
     for testedCol in range(col-1, col+2):
         for testedRow in range(row-1, row+2):
-            print()
-            print("testedCol = ", testedCol)
-            print("testedRow = ", testedRow)
+            # print()
+            # print("testedCol = ", testedCol)
+            # print("testedRow = ", testedRow)
             if testedCol == col and testedRow == row:
                 continue
             elif testedCol < 0 or testedRow < 0 or testedCol >= len(frame) or testedRow >= len(frame[col]) :
                 continue
             else:
-                print("Counting")
+                # print("Counting")
                 if isAlive(frame[testedCol][testedRow]):
                     count = count + 1
-                    print("count is ", count)
+                    # print("count is ", count)
     # print("count = ", count)
     return count
         
 def printingFrame(frame, frameCount):
     print()
     print("Printing frame", frameCount, "as table")
-    tableView(mainFrame) 
+    tableView(frame) 
 
 ####################    MAIN     #################
 # Creating the Blinker
@@ -91,6 +91,7 @@ while True:
         for row in range(0, len(mainFrame[0])):
             checkingSpecificElementConditions(mainFrame, col, row, tempFrame)
     mainFrame = tempFrame
+    tempFrame = [[' ' for i in range(cols)] for j in range(rows)]
     frameCount = frameCount + 1
     printingFrame(mainFrame, frameCount)
-    time.sleep(5)
+    time.sleep(2)
