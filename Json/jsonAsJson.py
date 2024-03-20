@@ -1,9 +1,14 @@
 import json
 import re
 
+
+# The same task from GeeksforGeeks: https://www.geeksforgeeks.org/write-a-dictionary-to-a-file-in-python/
+
 # work with json object 
+# DICT object in Python IS A JSON object
 jsonobjectAsString = { "value4":"2728_RE", "value1":"1_R", "value2":2, "value3":"3_RE" }
 with open("data_file.json", "w") as write_file:
+    # in order to write it to a file we need to use json.dumps and write in order to write it as json.
     json.dump(jsonobjectAsString, write_file)
 
 jsonString = json.dumps(jsonobjectAsString)

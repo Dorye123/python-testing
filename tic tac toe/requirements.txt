@@ -1,0 +1,2 @@
+# py -3 -m pip install humancursor https://pypi.org/project/HumanCursor/
+humancursor=1.1.5
